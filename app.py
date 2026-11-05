@@ -4,18 +4,26 @@ from tensorflow.keras.models import load_model
 import numpy as np
 import matplotlib.pyplot as plt
 from PIL import Image
+import os
+import urllib.request
 
-# 1. Page Configuration for your seminar presentation
+# 1. Page Configuration
 st.set_page_config(
-    page_title="Brain Tumor Classification",
+    page_title="Brain Tumor Classification & XAI",
     page_icon="🧠",
     layout="centered"
 )
 
-# 2. Load your saved V3 model (cached so it loads fast)
+# 2. Automatically download model from GitHub Release if not present locally
+MODEL_PATH = "best_brain_tumor_model_v3.keras"
+MODEL_URL = "https://github.com/SS-Mohanty/Brain-tumor-detection-system/releases/download/v1.0/best_brain_tumor_model_v3.keras"  
+
 @st.cache_resource
 def get_model():
-    return load_model("best_brain_tumor_model_v3.keras")
+    if not os.path.exists(MODEL_PATH):
+        with st.spinner("Downloading AI model weights (first-time setup)... Please wait."):
+            urllib.request.urlretrieve(MODEL_URL, MODEL_PATH)
+    return load_model(MODEL_PATH)
 
 with st.spinner("Loading AI Model... Please wait."):
     model = get_model()
