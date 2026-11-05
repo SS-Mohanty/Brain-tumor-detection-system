@@ -28,7 +28,7 @@ def get_model():
 with st.spinner("Loading AI Model... Please wait."):
     model = get_model()
 
-class_names = ['glioma', 'meningioma', 'notumor', 'pituitary']
+class_names = ['glioma', 'meningioma', 'no tumor', 'pituitary']
 
 # 3. Web App UI Layout
 st.title("🧠 Automated Brain Tumor Classification")
@@ -56,7 +56,7 @@ if uploaded_file is not None:
     # Display Results First
     st.markdown("---")
     st.subheader("Diagnostic Prediction Results")
-    if pred_label == "notumor":
+    if pred_label == "no tumor":
         st.success(f"**Prediction:** {pred_label.upper()} (Confidence: {confidence:.2f}%)")
     else:
         st.error(f"**Prediction:** {pred_label.upper()} Tumor Detected (Confidence: {confidence:.2f}%)")
