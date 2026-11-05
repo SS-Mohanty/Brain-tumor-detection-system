@@ -16,7 +16,7 @@ Beyond standard classification, this project integrates **Explainable AI (XAI)**
 * **Custom CNN Architecture:** A lightweight, 3-stage Convolutional Neural Network optimized for 150x150 MRI input dimensions, achieving **90.69% classification accuracy**.
 * **Advanced Grad-CAM Artifact Resolution:** Addressed the common XAI issue of low-resolution feature map (17x17) "bleeding" onto skull boundaries. This was resolved by implementing a custom post-processing pipeline utilizing **Gaussian smoothing, tissue thresholding, and a radial center-bias mask**.
 * **Dynamic Weight Loading:** To bypass GitHub's strict file size limitations for the 55MB `.keras` model, the weights are hosted via GitHub Releases. The Streamlit application dynamically fetches and caches the weights upon first initialization using `urllib.request`.
-* **Professional UI/UX:** Built with Streamlit, featuring a side-by-side diagnostic layout comparing the raw MRI scan directly against the Grad-CAM heatmap.
+* **UI/UX:** Built with Streamlit, featuring a side-by-side diagnostic layout comparing the raw MRI scan directly against the Grad-CAM heatmap.
 
 ## Dataset
 The model was trained on a comprehensive 4-class Brain Tumor MRI dataset sourced from Kaggle. 
